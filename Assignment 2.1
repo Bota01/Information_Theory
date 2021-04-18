@@ -1,11 +1,30 @@
 with open('it.txt') as f:
     txt = f.read()
 listtt= list(txt)
+size = len(listtt)
 mydict ={}
 for word in listtt:
-        if word in mydict:
-            mydict[word] += 1
-        else:
-            mydict[word] = 1
-print(mydict)
+    if word in mydict:
+        mydict[word] += 1
+    else:
+        mydict[word] = 1
+
+mydict1={}
+mydict1=dict(sorted(mydict.items(),key= lambda x:x[1],reverse=True))
+
+print('Frequencies of each character:')
+print(mydict1)
+
 print(60*'-')
+print('Length of file:\n')
+print(size)
+print(60*'-')
+
+dddd = {}
+ll = []
+
+print('Probabilities of each character:')
+for key, value in mydict1.items():
+    print(key, 'Probability:', round(value/size ,3 ))
+    dddd[key] = round(value/size ,3 )
+    ll.append((round(value/size ,3 ), key) )
