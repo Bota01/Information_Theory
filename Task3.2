@@ -1,0 +1,39 @@
+vals = {l:v for (v,l) in ll}
+code, tree = Huffman_code(vals)
+
+text = txt
+encoded = ''.join([code[t] for t in text])
+print('Encoded text:', encoded, '\n')
+
+char=[]
+char_all=[]
+ll=list(ll)
+
+for t in text:
+    for i in ll:
+        if t==list(i)[1]:
+            char = list(i)
+            char.append(code[t])
+            char_all.append(char)
+print('Characters with probability and code:')
+
+unique = []
+for c in char_all:
+    if c not in unique:
+        unique.append(c)
+print(unique, '\n')
+
+decoded = []
+i = 0
+while i < len(encoded):
+    ch = encoded[i]
+    act = tree[ch]
+    while not isinstance(act, str):
+        i += 1
+        ch = encoded[i]
+        act = act[ch]
+    decoded.append(act)
+    i += 1
+
+result = ''.join(decoded)
+print('Decoded text:', result)
