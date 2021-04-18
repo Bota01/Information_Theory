@@ -1,0 +1,3 @@
+file = open("compressed.txt","w+")
+file.write(encoded)
+file.close()
