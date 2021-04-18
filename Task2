@@ -1,0 +1,18 @@
+ll.sort()
+main_l = []
+for i in ll:
+    main_l.app¬end(i[0])
+main_l
+
+
+s_l = main_l
+sum1=0
+
+for i in range(len(s_l)-1):
+    s_l.sort()
+    s_l1 = s_l
+    sum1 = s_l[0] + s_l[1]
+    s_l = []
+    s_l.append(sum1)
+    s_l.extend(s_l1[2:])
+    print(s_l)
