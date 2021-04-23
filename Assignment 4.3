@@ -1,0 +1,16 @@
+decoded = []
+i = 0
+while i < len(encoded):
+    letter = encoded[i]
+    text = huffman[letter]
+    while type(text)!= str:
+        i += 1
+        letter = encoded[i]
+        text = text[letter]
+    decoded.append(text)
+    i += 1
+
+decoded = ''.join(decoded)
+print('Original text:', txt)
+print('Decoded text:', decoded)
+print(txt==decoded)
