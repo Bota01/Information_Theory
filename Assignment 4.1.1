@@ -1,0 +1,22 @@
+leafs_l = []
+leafs_l_new = []
+code_l = []
+code_l_new = []
+
+def encode(branch, key, code_dict, code = ''):    
+    leafs = branch[key] 
+    huffman = {}
+    if len(leafs) == 2:
+        huffman['0'] = encode(branch, leafs[0], code_dict, code+'0')
+        huffman['1'] = encode(branch, leafs[1], code_dict, code+'1')
+        
+        leafs_l.append((leafs[0], leafs[1]))
+        leafs_l_new.append((leafs_l[-1]))
+        
+        code_l.append((code))
+        code_l_new.append((code_l[-1]))
+        
+        return huffman
+    else:
+        code_dict[key] = code
+        return key
