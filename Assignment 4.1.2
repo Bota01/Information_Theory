@@ -1,0 +1,17 @@
+def Huffman(char):    
+    branch = {}   #branch {'Y': [], 'o': [], ' ': [], 't': [], 's': [], 'i': [], 'Yo': ['Y', 'o'],
+                    #'Yo ': ['Yo', ' '], 'ts': ['t', 's'], 'iYo ': ['i', 'Yo '], 'tsiYo ': ['ts', 'iYo ']}
+  
+    for n in char.keys(): 
+        branch[n] = []
+    while len(char) > 1: 
+        sort_char = sorted(char.items(), key=lambda i:i[1]) 
+        c = sort_char[0][0]
+        c1 = sort_char[1][0]
+        char[c+c1] = char.pop(c) + char.pop(c1) #sum of prob-s
+        branch[c+c1] = [c, c1]  # sum of chars ['ts', 'iYo ']
+    char_num = {}     #char_num {'t': '00', 's': '01', 'i': '10', 'Y': '1100', 'o': '1101', ' ': '111'}
+    key = c+c1    #key tsiYo 
+    huffman = {}    #{'0': {'0': 't', '1': 's'}, '1': {'0': 'i', '1': {'0': {'0': 'Y', '1': 'o'}, '1': ' '}}}
+    huffman = encode(branch, key, char_num) 
+    return char_num, huffman
